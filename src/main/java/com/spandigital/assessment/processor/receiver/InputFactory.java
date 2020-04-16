@@ -1,7 +1,26 @@
 package com.spandigital.assessment.processor.receiver;
 
-public class InputFactory {
-//https://www.javacodegeeks.com/2019/02/approach-simulate-input-check-output.html
-//https://examples.javacodegeeks.com/core-java/junit/junit-keyboard-input-example/
+import com.spandigital.assessment.contract.Reader;
+import com.spandigital.assessment.model.ScoresInput;
 
+import java.io.InputStream;
+import java.util.Hashtable;
+
+public class InputFactory {
+
+    private static Hashtable<String, Reader> processorTable = new Hashtable<>();
+    private String key;
+
+    static {
+        processorTable.put(ScoresInput.FILE.getInputName(), new ScoreFile());
+        processorTable.put(ScoresInput.STDIN.getInputName(), new StandardInput());
+    }
+
+    public InputFactory(String key) {
+        this.key = key;
+    }
+
+    public Iterable<String> processInput(InputStream in) {
+        return processorTable.get(this.key).read(in);
+    }
 }

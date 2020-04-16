@@ -11,10 +11,4 @@ public class CommandsTest {
         assertNotNull(Commands.showAll());
     }
 
-    @Test
-    public void getCommand_must_not_be_empty() {
-        assertNotNull(Commands.getCommand("sdjbjvbv"));
-        assertNotNull(Commands.getCommand("help"));
-        assertNotNull(Commands.getCommand("file"));
-    }
 }

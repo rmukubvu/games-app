@@ -1,23 +1,31 @@
 package com.spandigital.assessment.processor.receiver;
 
-public class BaseReceiver {
-    
-    private static final String FILE = "file";
-    private static final String STDIN = "stdin";
+import com.spandigital.assessment.model.InvalidCommandException;
+import com.spandigital.assessment.model.ScoresInput;
 
-    public void processInput(String[] args){
-        //determine if file path was provided
-        String filePath = "";
-        String key = STDIN;
-        //check if args[0] is -f
-        //check args[1] should be a file
-        //on error display commands should bubble up to main
-        if (args.length >= 1  ) {
-            if (args[0].compareToIgnoreCase("-f") == 0){
-                //get file name
-                filePath = args[1];
-                key = FILE;
-            }
+import java.io.*;
+
+public class BaseReceiver {
+
+    public Iterable<String> processInput(String[] args) throws InvalidCommandException, FileNotFoundException {
+        String key;
+        if (args.length == 0) {
+            key = ScoresInput.STDIN.getInputName();
+        } else if (args.length == 2) {
+            key = ScoresInput.FILE.getInputName();
+        } else {
+            throw new InvalidCommandException("Invalid input");
         }
+        InputStream in = getStream(key, args);
+        return new InputFactory(key).processInput(in);
     }
+
+    private InputStream getStream(String key,String[] args) throws FileNotFoundException {
+        if (key.equalsIgnoreCase(ScoresInput.STDIN.getInputName())) {
+            return System.in;
+        }
+        //filepath is at args[1] @ args[0] is -f
+        return new FileInputStream(new File(args[1]));
+    }
+
 }
