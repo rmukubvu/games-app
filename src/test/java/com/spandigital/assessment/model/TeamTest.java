@@ -11,7 +11,7 @@ public class TeamTest {
 
     @Before
     public void setup(){
-        team = new Team("Tarantulas",6);
+        team = new Team("Tarantulas",0,6);
     }
 
     @Test

@@ -12,8 +12,8 @@ public class InputFactory {
     private String key;
 
     static {
-        processorTable.put(ScoresInput.FILE.getInputName(), new ScoreFile());
-        processorTable.put(ScoresInput.STDIN.getInputName(), new StandardInput());
+        processorTable.put(ScoresInput.FILE.value(), new ScoreFile());
+        processorTable.put(ScoresInput.STDIN.value(), new StandardInput());
     }
 
     public InputFactory(String key) {
