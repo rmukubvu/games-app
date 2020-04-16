@@ -12,6 +12,7 @@ import java.util.List;
 public class RankSortingTest {
 
     private List<Team> unsortedList = new ArrayList<>();
+
     @Before
     public void setup(){
         unsortedList.add(new Team("A",0,5));

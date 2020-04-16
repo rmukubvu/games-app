@@ -6,10 +6,11 @@ import java.util.List;
 
 public class Numbering {
 
-    public static void show(List<Team> teams) {
+    public static String format(List<Team> teams) {
         int at = 0;
         int points;
         int current = 0;
+        StringBuilder sb = new StringBuilder();
         for (int i = 0 ; i < teams.size() ; i++ ) {
             Team team = teams.get(i);
             points = team.getPoints();
@@ -17,9 +18,11 @@ public class Numbering {
                 at++;
             }
             current = points;
-            System.out.printf("%d. %s\n", at, team.toString());
+            sb.append(String.format("%d. %s\n", at, team.toString()));
+
             if (at == i)
                 at++;
         }
+        return sb.toString();
     }
 }

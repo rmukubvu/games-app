@@ -15,20 +15,21 @@ public class Compute {
         this.db = db;
     }
 
-    public void printLogTable(final Iterable<String> scores) {
+    public String printLogTable(final Iterable<String> scores) {
         List<Team> teams = new ArrayList<>();
         //get the points for each line
-        for (String scoreLine : scores
-             ) {
-            //
+        for (String scoreLine : scores) {
+            //get list of teams per line
+            //2 per line
             teams.addAll(getTeamCollectionFromLine(scoreLine));
-            //
             calculatePointsForTeams(teams);
             //clear it
             teams.clear();
         }
         //once done do the sorting to display
-        sortAndDisplay();
+        sort(teams);
+        //format
+        return format(teams);
     }
 
     private int getSavedPoints(String key){
@@ -39,12 +40,13 @@ public class Compute {
         return team.getPoints();
     }
 
-    private void sortAndDisplay() {
-        List<Team> teams = new ArrayList<>();
+    private void sort(List<Team> teams) {
         teams.addAll((Collection<? extends Team>) db.getAll());
         RankSorting.sort(teams);
-        //display output formatted
-        Numbering.show(teams);
+    }
+
+    private String format(List<Team> teams){
+        return Numbering.format(teams);
     }
 
     private Collection<? extends Team> getTeamCollectionFromLine(String line) {

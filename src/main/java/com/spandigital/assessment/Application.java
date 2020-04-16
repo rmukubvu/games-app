@@ -17,7 +17,7 @@ public class Application {
             Iterable<String> scores = baseReceiver.processInput(args);
             //calculate scores and display the output
             Compute compute = new Compute(new InMemory<>());
-            compute.printLogTable(scores);
+            System.out.println(compute.printLogTable(scores));
         }catch (InvalidCommandException | FileNotFoundException ice){
             //display the commands
             System.out.println(Commands.showAll());
