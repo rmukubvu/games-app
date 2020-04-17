@@ -19,10 +19,15 @@ public class StandardInput implements Reader {
         String input;
         List<String> scores = new ArrayList<>();
         //quit loop if input is a q irrespective of the case
-        System.out.print("Enter score line : ");
-        while((input = scanner.next()).compareToIgnoreCase("q") != 0){
-            System.out.print("Enter score line : ");
-            scores.add(input);
+        System.out.println("Enter score line : ");
+        while((input = scanner.nextLine()).compareToIgnoreCase("q") != 0){
+            if (input.isEmpty()){
+                System.out.println("Please enter valid input");
+                System.out.println("Enter score line : ");
+            }else {
+                scores.add(input);
+                System.out.println("Enter score line : ");
+            }
         }
         return scores;
     }
