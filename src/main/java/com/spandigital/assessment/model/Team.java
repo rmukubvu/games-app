@@ -2,7 +2,16 @@ package com.spandigital.assessment.model;
 
 public class Team {
     private String name;
-    private int points;
+    private Integer score;
+    private Integer points;
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 
     public String getName() {
         return name;
@@ -12,7 +21,7 @@ public class Team {
         this.name = name;
     }
 
-    public int getPoints() {
+    public Integer getPoints() {
         return points;
     }
 
@@ -20,10 +29,23 @@ public class Team {
         this.points = points;
     }
 
-    public Team(String name, int points) {
+    public Team() {
+        this.name = "";
+        this.score = 0;
+        this.points = 0;
+    }
+
+    public Team(String name, int score) {
         this.name = name;
+        this.score = score;
+    }
+
+    public Team(String name, int score , int points) {
+        this.name = name;
+        this.score = score;
         this.points = points;
     }
+
 
     @Override
     public String toString() {

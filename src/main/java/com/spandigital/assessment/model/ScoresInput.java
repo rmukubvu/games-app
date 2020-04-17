@@ -10,7 +10,7 @@ public enum ScoresInput {
         this.inputName = inputName;
     }
 
-    public String getInputName() {
+    public String value() {
         return inputName;
     }
 }

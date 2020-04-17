@@ -11,7 +11,7 @@ public enum Points {
         this.points = points;
     }
 
-    public int getPoints() {
+    public int value() {
         return points;
     }
 }
