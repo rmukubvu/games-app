@@ -21,9 +21,9 @@ public class InMemory<V> implements Database<V> {
     @Override
     public Iterable<V> getAll() {
         List<V> result = new ArrayList<>();
-        for (Map.Entry<String,V> entry : database.entrySet()
+        for (V entry : database.values()
              ) {
-            result.add(entry.getValue());
+            result.add(entry);
         }
         return result;
     }
