@@ -1,7 +1,7 @@
 # games-app
 Usage:<br/>
-        java -jar games-app-1.0-SNAPSHOT.jar<br/>                        
-        <strong>for using standard input option</strong><br/>
+         <strong>for using standard input option</strong><br/>
+        java -jar games-app-1.0-SNAPSHOT.jar<br/>
         <br/>
         <br/>
         java -jar games-app-1.0-SNAPSHOT.jar -f /path/of/file <br/>
