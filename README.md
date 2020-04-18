@@ -1,3 +1,5 @@
 # games-app
-To run and provide an input file :
-java -jar games-app-1.0-SNAPSHOT.jar -f /path/to/testing/file
+Usage:
+        java -jar games-app-1.0-SNAPSHOT.jar                        for using standard input option
+        java -jar games-app-1.0-SNAPSHOT.jar -f <path of file>      for providing input from a file
+
